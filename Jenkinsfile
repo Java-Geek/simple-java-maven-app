@@ -1,4 +1,4 @@
-#!/usr/bin/env groovy
+
 pipeline{
     agent {
         docker {
@@ -8,7 +8,10 @@ pipeline{
     }
     stages{
         stage('Build'){
-            sh 'mvn clean install -DskipTests'
+            steps{
+                sh 'mvn clean install -DskipTests=true'
+            }
+
         }
     }
 }
